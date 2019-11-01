@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Patch>
+
+<!-- Compatibility checker for:
+Ammunition
+Rim of Madness - Bones
+
+If both are loaded, adds bone to ingredients option for primitive ammo
+-->  
+  <Operation Class="PatchOperationFindMod">
+    <mods>
+      <li>Rim of Madness - Bones</li>
+    </mods>
+    <match Class="PatchOperationSequence">
+          <success>Always</success>
+          <operations>
+            <li Class="PatchOperationFindMod">
+              <mods>
+                  <li>Ammunition</li>
+              </mods>
+              <match Class="PatchOperationReplace">
+                <xpath>Defs/RecipeDef[defName="Make_PrimitiveAmmo"]/ingredients</xpath>
+                <value>
+                  <ingredients>
+                    <li>
+                      <filter>
+                        <thingDefs>
+                          <li>WoodLog</li>
+                          <li>BoneItem</li>
+                        </thingDefs>
+                      </filter>
+                      <count>10</count>
+                    </li>
+                    <li>
+                      <filter>
+                        <categories>
+                          <li>Leathers</li>
+                        </categories>
+                      </filter>
+                      <count>5</count>
+                    </li>
+                  </ingredients>
+                </value>
+              </match>
+            </li>
+          </operations>
+      </match>
+  </Operation>
+  <Operation Class="PatchOperationFindMod">
+    <mods>
+      <li>Rim of Madness - Bones</li>
+    </mods>
+    <match Class="PatchOperationSequence">
+      <success>Always</success>
+      <operations>
+        <li Class="PatchOperationFindMod">
+          <mods>
+              <li>Ammunition</li>
+          </mods>                
+          <match Class="PatchOperationReplace">
+            <xpath>Defs/RecipeDef[defName="Make_PrimitiveAmmo"]/fixedIngredientFilter</xpath>
+            <value>
+              <fixedIngredientFilter>
+                <thingDefs>
+                  <li>WoodLog</li>
+                  <li>BoneItem</li>
+                </thingDefs>
+                <categories>
+                  <li>Leathers</li>
+                </categories>
+              </fixedIngredientFilter>
+            </value>
+          </match>              
+        </li>
+      </operations>
+    </match>
+  </Operation>
+</Patch>
+ 
